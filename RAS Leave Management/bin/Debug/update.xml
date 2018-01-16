@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<sharpUpdate>
+
+	<update appID="RAS Leave Management">
+
+		<version>1.0.0.0</version>
+
+		<url>https://raw.githubusercontent.com/itechcarlo09/RAS-Leave-Management-with-Logs/new/RAS%20Leave%20Management/bin/Debug/RAS%20Leave%20Management.exe</url>
+
+		<fileName>RAS Leave Management.exe</fileName>
+
+		<md5>85fe91eac20e54ea02029d5505d1a109</md5>
+
+		<description>This is the RAS with time. Some bugs fixed</description>
+
+		<launchArgs></launchArgs>
+
+	</update>
+
+</sharpUpdate>
