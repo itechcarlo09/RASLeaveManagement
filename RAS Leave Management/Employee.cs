@@ -206,12 +206,12 @@ namespace RAS_Leave_Management
         #region SharpUpdate
         public string ApplicationName
         {
-            get { return "TestApp"; }
+            get { return "RAS Leave Management"; }
         }
 
         public string ApplicationID
         {
-            get { return "TestApp"; }
+            get { return "RAS Leave Management"; }
         }
 
         public Assembly ApplicationAssembly
@@ -226,7 +226,7 @@ namespace RAS_Leave_Management
 
         public Uri UpdateXmlLocation
         {
-            get { return new Uri("https://raw.githubusercontent.com/itechcarlo09/RAS-Leave-Management-with-Logs/new/RAS%20Leave%20Management/bin/Debug/update.xml"); }
+            get { return new Uri(""); }
         }
 
         public Form Context
