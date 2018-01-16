@@ -10,6 +10,8 @@ Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "12-20-2017", "12-20-2017\12
 		{0819DC11-6E34-46A4-A114-5643582FAA35} = {0819DC11-6E34-46A4-A114-5643582FAA35}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUpdate", "SharpUpdate\SharpUpdate.csproj", "{811C1D69-764F-4335-8363-B93A1D106268}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -39,6 +41,16 @@ Global
 		{3CBF5100-A312-4726-91BC-B4CC0CA612F5}.Release|Any CPU.Build.0 = SingleImage
 		{3CBF5100-A312-4726-91BC-B4CC0CA612F5}.SingleImage|Any CPU.ActiveCfg = SingleImage
 		{3CBF5100-A312-4726-91BC-B4CC0CA612F5}.SingleImage|Any CPU.Build.0 = SingleImage
+		{811C1D69-764F-4335-8363-B93A1D106268}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{811C1D69-764F-4335-8363-B93A1D106268}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{811C1D69-764F-4335-8363-B93A1D106268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{811C1D69-764F-4335-8363-B93A1D106268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{811C1D69-764F-4335-8363-B93A1D106268}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{811C1D69-764F-4335-8363-B93A1D106268}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{811C1D69-764F-4335-8363-B93A1D106268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{811C1D69-764F-4335-8363-B93A1D106268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{811C1D69-764F-4335-8363-B93A1D106268}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{811C1D69-764F-4335-8363-B93A1D106268}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

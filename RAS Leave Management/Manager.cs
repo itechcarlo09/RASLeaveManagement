@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Reflection;
+using SharpUpdate;
 
 namespace RAS_Leave_Management
 {
-    public partial class Manager : MaterialSkin.Controls.MaterialForm
+    public partial class Manager : MaterialSkin.Controls.MaterialForm,ISharpUpdatable
     {
         SqlConnection cn = new SqlConnection(@"Data Source=rasleavemanagementwithlogs.cgz2qebdh3p2.us-east-2.rds.amazonaws.com;Initial Catalog=RASLeaveManagement;Persist Security Info=True;User ID=master;Password=rodandstaff2017");
 
@@ -20,6 +22,7 @@ namespace RAS_Leave_Management
         int selectedROW, requestID, currentmonth, dbmonth;
         double day,temp;
         Timer t = new Timer();
+        private SharpUpdater updater;
 
         public Manager()
         {
@@ -27,10 +30,12 @@ namespace RAS_Leave_Management
             gridRequest.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             gridLeave.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             listEmployees.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            updater = new SharpUpdater(this);
         }
 
         private void Manager_Load(object sender, EventArgs e)
         {
+            updater.DoUpdate();
             month();
             cn.Close();
             GetEmployees();
@@ -377,5 +382,37 @@ namespace RAS_Leave_Management
             GetEmployees();
             leave_request();
         }
+
+        #region SharpUpdate
+        public string ApplicationName
+        {
+            get { return "RAS Leave Management"; }
+        }
+
+        public string ApplicationID
+        {
+            get { return "RAS Leave Management"; }
+        }
+
+        public Assembly ApplicationAssembly
+        {
+            get { return Assembly.GetExecutingAssembly(); }
+        }
+
+        public Icon ApplicationIcon
+        {
+            get { return this.Icon; }
+        }
+
+        public Uri UpdateXmlLocation
+        {
+            get { return new Uri("https://raw.githubusercontent.com/itechcarlo09/RAS-Leave-Management-with-Logs/new/RAS%20Leave%20Management/bin/Debug/update.xml"); }
+        }
+
+        public Form Context
+        {
+            get { return this; }
+        }
+        #endregion
     }
 }

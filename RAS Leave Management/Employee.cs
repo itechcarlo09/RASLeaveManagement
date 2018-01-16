@@ -19,15 +19,18 @@ namespace RAS_Leave_Management
 
         List<int> respondID = new List<int>();
         Timer t = new Timer();
+        private SharpUpdater updater;
 
         public Employee()
         {
             InitializeComponent();
             gridLeave.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            updater = new SharpUpdater(this);
         }
 
         private void Employee_Load(object sender, EventArgs e)
         {
+            updater.DoUpdate();
             month();
             cn.Close();
             days_available();
@@ -226,7 +229,7 @@ namespace RAS_Leave_Management
 
         public Uri UpdateXmlLocation
         {
-            get { return new Uri(""); }
+            get { return new Uri("https://raw.githubusercontent.com/itechcarlo09/RAS-Leave-Management-with-Logs/new/RAS%20Leave%20Management/bin/Debug/update.xml"); }
         }
 
         public Form Context

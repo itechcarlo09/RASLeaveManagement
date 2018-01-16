@@ -78,11 +78,7 @@ namespace SharpUpdate
 					if (new SharpUpdateAcceptForm(this.applicationInfo, update).ShowDialog(this.applicationInfo.Context) == DialogResult.Yes)
 						this.DownloadUpdate(update); // Do the update
 				}
-				else
-					MessageBox.Show("You have the latest version already!");
 			}
-			else
-				MessageBox.Show("No update information found!");
         }
 
         /// <summary>

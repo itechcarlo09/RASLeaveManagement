@@ -8,26 +8,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SharpUpdate;
+using System.Reflection;
 
 namespace RAS_Leave_Management
 {
-    public partial class TopManagement : MaterialSkin.Controls.MaterialForm
+    public partial class TopManagement : MaterialSkin.Controls.MaterialForm,ISharpUpdatable
     {
         SqlConnection cn = new SqlConnection(@"Data Source=rasleavemanagementwithlogs.cgz2qebdh3p2.us-east-2.rds.amazonaws.com;Initial Catalog=RASLeaveManagement;Persist Security Info=True;User ID=master;Password=rodandstaff2017");
         Timer t = new Timer();
         int selectedROW, requestID;
         double day,temp;
         string requesttype;
+        private SharpUpdater updater;
 
         public TopManagement()
         {
             InitializeComponent();
             gridRequest.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             listLeaders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            updater = new SharpUpdater(this);
         }
 
         private void TopManagement_Load(object sender, EventArgs e)
         {
+            updater.DoUpdate();
             GetManagers();
             leave_request();
 
@@ -272,5 +277,37 @@ namespace RAS_Leave_Management
             leave_request();
             GetManagers();
         }
+
+        #region SharpUpdate
+        public string ApplicationName
+        {
+            get { return "RAS Leave Management"; }
+        }
+
+        public string ApplicationID
+        {
+            get { return "RAS Leave Management"; }
+        }
+
+        public Assembly ApplicationAssembly
+        {
+            get { return Assembly.GetExecutingAssembly(); }
+        }
+
+        public Icon ApplicationIcon
+        {
+            get { return this.Icon; }
+        }
+
+        public Uri UpdateXmlLocation
+        {
+            get { return new Uri("https://raw.githubusercontent.com/itechcarlo09/RAS-Leave-Management-with-Logs/new/RAS%20Leave%20Management/bin/Debug/update.xml"); }
+        }
+
+        public Form Context
+        {
+            get { return this; }
+        }
+        #endregion
     }
 }
