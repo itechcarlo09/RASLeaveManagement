@@ -12,6 +12,11 @@ Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "12-20-2017", "12-20-2017\12
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUpdate", "SharpUpdate\SharpUpdate.csproj", "{811C1D69-764F-4335-8363-B93A1D106268}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D6152F13-E34D-4131-80EB-ADEA46597F9E}"
+	ProjectSection(SolutionItems) = preProject
+		RAS Leave Management\bin\Debug\update.xml = RAS Leave Management\bin\Debug\update.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
