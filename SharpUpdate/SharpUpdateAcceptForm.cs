@@ -43,9 +43,6 @@ namespace SharpUpdate
 
             // Adds the update version # to the form
             this.lblNewVersion.Text = String.Format("New Version: {0}", this.updateInfo.Version.ToString());
-            // shortcut to say yes to this form
-            this.DialogResult = DialogResult.Yes;
-            this.Close();
         }
 
         private void btnYes_Click(object sender, EventArgs e)
