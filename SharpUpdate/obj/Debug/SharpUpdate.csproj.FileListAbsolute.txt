@@ -27,3 +27,4 @@ C:\Users\ISEND\Documents\Visual Studio 2013\Projects\RAS Leave Management\SharpU
 C:\Users\ISEND\Documents\Visual Studio 2013\Projects\RAS Leave Management\SharpUpdate\obj\Debug\SharpUpdate.csproj.GenerateResource.Cache
 C:\Users\ISEND\Documents\Visual Studio 2013\Projects\RAS Leave Management\SharpUpdate\obj\Debug\SharpUpdate.dll
 C:\Users\ISEND\Documents\Visual Studio 2013\Projects\RAS Leave Management\SharpUpdate\obj\Debug\SharpUpdate.pdb
+C:\Users\ISEND\Documents\Visual Studio 2013\Projects\RAS Leave Management\SharpUpdate\obj\Debug\SharpUpdate.csprojResolveAssemblyReference.cache
