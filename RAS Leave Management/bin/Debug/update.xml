@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <SharpUpdate>
 	<update appID="RAS Leave Management">
-		<version>3.0.0.1</version>
+		<version>1.0.1.0</version>
 		<url>https://github.com/itechcarlo09/RASLeaveManagement/blob/master/RAS%20Leave%20Management/bin/Debug/RAS%20Leave%20Management.exe?raw=true</url>
 		<fileName>RAS Leave Management.exe</fileName>
 		<md5>17b682bfc01d96d74e81185754794fcb</md5>
