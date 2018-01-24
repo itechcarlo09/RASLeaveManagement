@@ -30,7 +30,6 @@ namespace RAS_Leave_Management
 
         private void Employee_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("1.0.2.0");
             updater.DoUpdate();
             month();
             cn.Close();
