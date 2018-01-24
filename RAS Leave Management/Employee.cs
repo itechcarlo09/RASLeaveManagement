@@ -30,7 +30,6 @@ namespace RAS_Leave_Management
 
         private void Employee_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("dfasfsadf");
             updater.DoUpdate();
             month();
             cn.Close();

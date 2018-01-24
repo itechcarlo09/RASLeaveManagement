@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <SharpUpdate>
 	<update appID="RAS Leave Management">
-		<version>1.0.4.0</version>
+		<version>1.0.5.0</version>
 		<url>https://github.com/itechcarlo09/RASLeaveManagement/blob/master/RAS%20Leave%20Management/bin/Debug/RAS%20Leave%20Management.exe?raw=true</url>
 		<fileName>RAS Leave Management.exe</fileName>
-		<md5>72addbaad31122255deb4a6d9a9161bb</md5>
-		<description>This is the RAS 1.0.4.0, some bugs are fixed..</description>
+		<md5>171f3344f98f34a4b2f1180d88bf1534</md5>
+		<description>This is the RAS 1.0.5.0, some bugs are fixed..</description>
 		<launchArgs></launchArgs>
 	</update>
 </SharpUpdate>
