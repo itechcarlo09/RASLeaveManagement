@@ -31,6 +31,7 @@
             this.lblDownloading = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.lblProgress = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblDownloading
@@ -60,11 +61,22 @@
             this.lblProgress.TabIndex = 2;
             this.lblProgress.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.label1.Location = new System.Drawing.Point(12, 162);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(391, 28);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "After updating wait the application to open";
+            // 
             // SharpUpdateDownloadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 196);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.lblDownloading);
@@ -86,5 +98,6 @@
         private System.Windows.Forms.Label lblDownloading;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label lblProgress;
+        private System.Windows.Forms.Label label1;
     }
 }
