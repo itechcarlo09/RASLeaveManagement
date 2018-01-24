@@ -106,16 +106,7 @@ namespace SharpUpdate
             }
             else
             {
-                string currentPath = this.applicationInfo.ApplicationAssembly.Location;
-                string newPath = Path.GetDirectoryName(currentPath) + "\\" + update.FileName;
-
-                // "Install" it
-                UpdateApplication(form.TempFilePath, currentPath, newPath, update.LaunchArgs);
-
-
                 MessageBox.Show("There was a problem downloading the update.\nPlease try again later.", "Update Download Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                Application.Exit();
             }
         }
 

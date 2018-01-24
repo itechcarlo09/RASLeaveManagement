@@ -336,7 +336,7 @@
             // btnChangePass
             // 
             this.btnChangePass.Depth = 0;
-            this.btnChangePass.Location = new System.Drawing.Point(787, 32);
+            this.btnChangePass.Location = new System.Drawing.Point(892, 33);
             this.btnChangePass.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnChangePass.Name = "btnChangePass";
             this.btnChangePass.Primary = true;

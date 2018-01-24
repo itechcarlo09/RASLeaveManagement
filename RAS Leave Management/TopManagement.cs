@@ -19,7 +19,7 @@ namespace RAS_Leave_Management
         Timer t = new Timer();
         int selectedROW, requestID;
         double day,temp;
-        string requesttype;
+        string requesttype, requeststatus;
         private SharpUpdater updater;
 
         public TopManagement()
@@ -94,7 +94,7 @@ namespace RAS_Leave_Management
             cn.Open();
             SqlCommand cm = cn.CreateCommand();
             cm.CommandType = CommandType.Text;
-            cm.CommandText = "SELECT leave_id 'Leave ID', acc_lastname + ', ' + acc_firstname 'Name', CONVERT(VARCHAR(12), leave_request_date, 107) 'Date', CASE leave_span when .5 THEN 'Half Day' WHEN 1 THEN 'Whole Day' END AS 'Leave Span', leave_reason 'Reason', leave_type 'type' FROM RequestLeave RL INNER JOIN Account A ON RL.leave_request = A.acc_id Where leave_status = 2 AND RL.leave_respond = '" + Login.id + "' ORDER BY leave_id DESC";
+            cm.CommandText = "SELECT leave_id 'Leave ID', acc_lastname + ', ' + acc_firstname 'Name', CONVERT(VARCHAR(12), leave_request_date, 107) 'Date', CASE leave_span when .5 THEN 'Half Day' WHEN 1 THEN 'Whole Day' END AS 'Leave Span', leave_reason 'Reason', leave_type 'Type', CASE leave_status when 1 then 'Approved' when 0 then 'Rejected' ELSE 'Pending' END AS 'Status' FROM RequestLeave RL INNER JOIN Account A ON RL.leave_request = A.acc_id Where RL.leave_respond = '"+ Login.id +"' ORDER BY leave_id DESC";
             cm.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cm);
@@ -194,6 +194,7 @@ namespace RAS_Leave_Management
                     }
                     cn.Close();
                     leave_request();
+                    GetManagers();
                 }
             }
             catch (Exception ex)
@@ -211,14 +212,62 @@ namespace RAS_Leave_Management
                 {
                     DataGridViewRow datagrid = gridRequest.Rows[selectedROW];
                     int ID = Convert.ToInt32(datagrid.Cells[0].Value);
+                    string span = Convert.ToString(datagrid.Cells[3].Value);
+                    DateTime requestdate = Convert.ToDateTime(datagrid.Cells[2].Value);
+                    if (span == "Whole Day")
+                        day = 1;
+                    else if (span == "Half Day")
+                        day = .5;
 
                     cn.Open();
-                    SqlCommand cm = cn.CreateCommand();
-                    cm.CommandType = CommandType.Text;
-                    cm.CommandText = "UPDATE RequestLeave SET leave_respond_date = '" + DateTime.Now + "', leave_status = 0 WHERE leave_id = '" + ID + "'";
-                    cm.ExecuteNonQuery();
+                    using (SqlCommand command = new SqlCommand("SELECT acc_id, leave_id 'Leave ID', acc_lastname + ', ' + acc_firstname 'Name', CONVERT(VARCHAR(12), leave_request_date, 107) 'Date', CASE leave_span when .5 THEN 'Half Day' WHEN 1 THEN 'Whole Day' END AS 'Leave Span', leave_reason 'Reason', leave_type 'Type', CASE leave_status when 1 then 'Approved' when 0 then 'Rejected' ELSE 'Pending' END AS 'Status' FROM RequestLeave RL INNER JOIN Account A ON RL.leave_request = A.acc_id Where RL.leave_id = '" + ID + "'", cn))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                requestID = Convert.ToInt32(reader.GetValue(0));
+                                requesttype = Convert.ToString(reader.GetValue(6));
+                                requeststatus = Convert.ToString(reader.GetValue(7));
+                            }
+                        }
+                    }
+
+                    if (requesttype == "Paid" && requeststatus == "Approved")
+                    {
+                        if (day == 1)
+                        {
+                            SqlCommand cm = cn.CreateCommand();
+                            cm.CommandType = CommandType.Text;
+                            cm.CommandText = "UPDATE RequestLeave SET leave_respond_date = '" + DateTime.Now + "', leave_status = 0  WHERE leave_id = '" + ID + "'";
+                            cm.ExecuteNonQuery();
+                            SqlCommand cm1 = cn.CreateCommand();
+                            cm1.CommandType = CommandType.Text;
+                            cm1.CommandText = "UPDATE A SET A.acc_leave = A.acc_leave +'" + day + "' FROM Account A INNER JOIN RequestLeave RL ON RL.leave_request = A.acc_id WHERE RL.leave_request = '" + requestID + "'";
+                            cm1.ExecuteNonQuery();
+                        }
+                        else if (day == .5)
+                        {
+                            SqlCommand cm = cn.CreateCommand();
+                            cm.CommandType = CommandType.Text;
+                            cm.CommandText = "UPDATE RequestLeave SET leave_respond_date = '" + DateTime.Now + "', leave_status = 1  WHERE leave_id = '" + ID + "'";
+                            cm.ExecuteNonQuery();
+                            SqlCommand cm1 = cn.CreateCommand();
+                            cm1.CommandType = CommandType.Text;
+                            cm1.CommandText = "UPDATE A SET A.acc_leave = A.acc_leave +'" + day + "' FROM Account A INNER JOIN RequestLeave RL ON RL.leave_request = A.acc_id WHERE RL.leave_request = '" + requestID + "'";
+                            cm1.ExecuteNonQuery();
+                        }
+                    }
+                    else if (requesttype == "Unpaid")
+                    {
+                        SqlCommand cm = cn.CreateCommand();
+                        cm.CommandType = CommandType.Text;
+                        cm.CommandText = "UPDATE RequestLeave SET leave_respond_date = '" + DateTime.Now + "', leave_status = 0  WHERE leave_id = '" + ID + "'";
+                        cm.ExecuteNonQuery();
+                    }
                     cn.Close();
                     leave_request();
+                    GetManagers();
                 }
             }
             catch(Exception ex)

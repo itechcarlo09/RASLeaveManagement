@@ -30,6 +30,7 @@ namespace RAS_Leave_Management
 
         private void Employee_Load(object sender, EventArgs e)
         {
+            MessageBox.Show("1.0.2.0");
             updater.DoUpdate();
             month();
             cn.Close();
@@ -91,10 +92,9 @@ namespace RAS_Leave_Management
 
         private void btnRequest_Click(object sender, EventArgs e)
         {
-            DateTime pacific = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "Taipei Standard Time");
-            MessageBox.Show(pacific.ToString("h:mm"));
             Request request = new Request();
             request.ShowDialog();
+            GetLeaveUpdate();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
