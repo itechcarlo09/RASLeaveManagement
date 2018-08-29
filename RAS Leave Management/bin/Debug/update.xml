@@ -1,11 +1,6 @@
-<?xml version="1.0"?>
-<SharpUpdate>
-	<update appID="RAS Leave Management">
-		<version>1.0.6.0</version>
-		<url>https://github.com/itechcarlo09/RASLeaveManagement/blob/master/RAS%20Leave%20Management/bin/Debug/RAS%20Leave%20Management.exe?raw=true</url>
-		<fileName>RAS Leave Management.exe</fileName>
-		<md5>ba60771731d06d1acce9b3ea4d48fb7a</md5>
-		<description>This is the RAS 1.0.6.0, some bugs are fixed..</description>
-		<launchArgs></launchArgs>
-	</update>
-</SharpUpdate>
+<?xml version="1.0" encoding="UTF-8"?>
+<item>
+    <version>3.0.0.0</version>
+    <url>https://raw.githubusercontent.com/itechcarlo09/RASLeaveManagement/master/RAS%20Project%20File.rar</url>
+    <mandatory>true</mandatory>
+</item>
